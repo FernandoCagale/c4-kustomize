@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: c4-order
+  labels:
+    version: v1
+    app: c4-order
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: c4-order
+  template:
+    metadata:
+      labels:
+        version: v1
+        app: c4-order
+    spec:
+      containers:
+      - name: c4-order
+        image: fernandocagale/c4-order
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: c4-order-env

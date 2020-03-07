@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - namespace-c4.yaml
+  - namespace-database.yaml
+  - namespace-message.yaml
+  - gateway.yaml
+commonLabels:
+  app.kubernetes.io/component: c4
+  app.kubernetes.io/managed-by: c4
+  app.kubernetes.io/part-of: c4
+  app.kubernetes.io/version: 0.0.1

@@ -4,7 +4,7 @@ Create all **namespaces**
 
 
 ```sh
-$   microk8s.kubectl apply -k c4/base
+$   kubectl apply -k c4/base
 ```
 
 ![](img/c4.gif)
@@ -15,7 +15,7 @@ $   microk8s.kubectl apply -k c4/base
 Helm install **mongo-order**
 
 ```sh
-$   helm install stable/mongodb \
+$   microk8s.helm install stable/mongodb \
     --name="mongo-order" \
     --set="mongodbRootPassword=root-password" \
     --set="mongodbUsername=admin" \
@@ -27,7 +27,7 @@ $   helm install stable/mongodb \
 Helm install **mongo-notify**
 
 ```sh
-$   helm install stable/mongodb \
+$   microk8s.helm install stable/mongodb \
     --name="mongo-notify" \
     --set="mongodbRootPassword=root-password" \
     --set="mongodbUsername=admin" \
@@ -39,7 +39,7 @@ $   helm install stable/mongodb \
 Helm install **mongo-payment**
 
 ```sh
-$   helm install stable/mongodb \
+$   microk8s.helm install stable/mongodb \
     --name="mongo-payment" \
     --set="mongodbRootPassword=root-password" \
     --set="mongodbUsername=admin" \
@@ -51,7 +51,7 @@ $   helm install stable/mongodb \
 Helm install **rabbitmq**
 
 ```sh
-$   helm install stable/rabbitmq \
+$   microk8s.helm install stable/rabbitmq \
     --name rabbitmq \
     --set="rabbitmq.username=guest" \
     --set="rabbitmq.password=guest" \
@@ -62,7 +62,7 @@ $   helm install stable/rabbitmq \
 Helm install **postgres**
 
 ```sh
-$   helm install stable/postgresql \
+$   microk8s.helm install stable/postgresql \
     --name postgres \
     --set postgresqlPassword=pgpassword,postgresqlDatabase=c4-customer-database \
     --namespace database

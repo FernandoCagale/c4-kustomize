@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: c4-customer-virtual-service
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - application-gateway-c4
+  http:
+  - match:
+    - uri:
+        prefix: /customers
+    route:
+    - destination:
+        host: c4-customer
+        port:
+          number: 8080

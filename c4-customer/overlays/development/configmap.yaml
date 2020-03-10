@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: c4-customer-env
+  labels:
+    app: c4-customer
+data:
+  AMQP_URI: "amqp://guest:guest@rabbitmq.message.svc.cluster.local:5672/"
+  POSTGRES_ADDRS: "postgresql://postgres:pgpassword@postgres-postgresql.database.svc.cluster.local:5432?sslmode=disable"
+  PORT: "8080"

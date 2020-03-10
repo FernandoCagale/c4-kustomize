@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: c4-payment-env
+  labels:
+    app: c4-payment
+data:
+  AMQP_URI: "amqp://guest:guest@rabbitmq.message.svc.cluster.local:5672/"
+  MONGO_ADDRS: "mongo-payment-mongodb.database.svc.cluster.local"
+  MONGO_DATABASE: "c4-payment-database"
+  MONGO_USERNAME: "admin"
+  MONGO_PASSWORD: "admin"
+  PORT: "8080"

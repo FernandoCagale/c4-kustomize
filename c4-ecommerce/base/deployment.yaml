@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: c4-ecommerce
+  labels:
+    version: v1
+    app: c4-ecommerce
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: c4-ecommerce
+  template:
+    metadata:
+      labels:
+        version: v1
+        app: c4-ecommerce
+    spec:
+      containers:
+      - name: c4-ecommerce
+        image: fernandocagale/c4-ecommerce
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: c4-ecommerce-env

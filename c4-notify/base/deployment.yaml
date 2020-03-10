@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: c4-notify
+  labels:
+    version: v1
+    app: c4-notify
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: c4-notify
+  template:
+    metadata:
+      labels:
+        version: v1
+        app: c4-notify
+    spec:
+      containers:
+      - name: c4-notify
+        image: fernandocagale/c4-notify
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 1
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 5
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: c4-notify-env

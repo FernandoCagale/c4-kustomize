@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: c4-notify-env
+  labels:
+    app: c4-notify
+data:
+  AMQP_URI: "amqp://guest:guest@rabbitmq.message.svc.cluster.local:5672/"
+  MONGO_ADDRS: "mongo-notify-mongodb.database.svc.cluster.local"
+  MONGO_DATABASE: "c4-notify-database"
+  MONGO_USERNAME: "admin"
+  MONGO_PASSWORD: "admin"
+  PORT: "8080"

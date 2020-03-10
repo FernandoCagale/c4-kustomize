@@ -1,5 +1,15 @@
 # c4-kustomize
 
+Create all **namespaces**
+
+
+```sh
+$   microk8s.kubectl apply -k c4/base
+```
+
+![](img/c4.gif)
+
+
 ## Helm
 
 Helm install **mongo-order**
@@ -59,14 +69,6 @@ $   helm install stable/postgresql \
 ```
 
 ## kustomize
-
-Install **c4**
-
-```sh
-$   kubectl apply -k c4/base
-```
-
-![](img/namespaces.gif)
 
 Install **c4-customer**
 

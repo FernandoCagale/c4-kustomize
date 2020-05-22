@@ -1,6 +1,6 @@
 # c4-kustomize
 
-##Flow
+## Flow
 
 ![alt tag](img/eda.png)
 

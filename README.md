@@ -1,4 +1,5 @@
-# c4-kustomize
+# c4-[kustomize](https://kustomize.io/)
+`Kubernetes native configuration management`
 
 ## Flow
 
@@ -77,29 +78,29 @@ $   microk8s.helm install stable/postgresql \
 Install [c4-customer](https://github.com/FernandoCagale/c4-customer)
 
 ```sh
-$   kustomize build c4-customer/overlays/development/ | kubectl -n c4 apply -f -
+$   kustomize build c4-customer/overlays/development/ | microk8s.kubectl -n c4 apply -f -
 ```
 
 Install [c4-order](https://github.com/FernandoCagale/c4-order)
 
 ```sh
-$   kustomize build c4-order/overlays/development/ | kubectl -n c4 apply -f -
+$   kustomize build c4-order/overlays/development/ | microk8s.kubectl -n c4 apply -f -
 ```
 
 Install [c4-payment](https://github.com/FernandoCagale/c4-payment)
 
 ```sh
-$   kustomize build c4-payment/overlays/development/ | kubectl -n c4 apply -f -
+$   kustomize build c4-payment/overlays/development/ | microk8s.kubectl -n c4 apply -f -
 ```
 
 Install [c4-ecommerce](https://github.com/FernandoCagale/c4-ecommerce)
 
 ```sh
-$   kustomize build c4-ecommerce/overlays/development/ | kubectl -n c4 apply -f -
+$   kustomize build c4-ecommerce/overlays/development/ | microk8s.kubectl -n c4 apply -f -
 ```
 
 Install [c4-notify](https://github.com/FernandoCagale/c4-notify)
 
 ```sh
-$   kustomize build c4-notify/overlays/development/ | kubectl -n c4 apply -f -
+$   kustomize build c4-notify/overlays/development/ | microk8s.kubectl -n c4 apply -f -
 ```

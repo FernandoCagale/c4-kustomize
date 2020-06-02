@@ -1,5 +1,6 @@
-# c4-[kustomize](https://kustomize.io/)
-`Kubernetes native configuration management`
+# c4-kustomize
+
+[kustomize](https://kustomize.io/) `Kubernetes native configuration management`
 
 ## Flow
 

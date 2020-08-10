@@ -10,7 +10,7 @@ Create all **namespaces**
 
 
 ```sh
-$   kubectl apply -k c4/base
+$   microk8s.kubectl apply -k c4/base
 ```
 
 ![](img/c4.gif)
@@ -21,57 +21,49 @@ $   kubectl apply -k c4/base
 Helm install **mongo-order**
 
 ```sh
-$   microk8s.helm install stable/mongodb \
-    --name="mongo-order" \
-    --set="mongodbRootPassword=root-password" \
-    --set="mongodbUsername=admin" \
-    --set="mongodbPassword=admin" \
-    --set="mongodbDatabase=c4-order-database" \
+$   microk8s.helm3 install mongo-order bitnami/mongodb \
+    --set="auth.rootPassword=root-password" \
+    --set="auth.username=admin" \
+    --set="auth.password=admin" \
+    --set="auth.database=c4-order-database" \
     --namespace database
 ```
 
 Helm install **mongo-notify**
 
 ```sh
-$   microk8s.helm install stable/mongodb \
-    --name="mongo-notify" \
-    --set="mongodbRootPassword=root-password" \
-    --set="mongodbUsername=admin" \
-    --set="mongodbPassword=admin" \
-    --set="mongodbDatabase=c4-notify-database" \
+$   microk8s.helm3 install mongo-notify bitnami/mongodb \
+    --set="auth.rootPassword=root-password" \
+    --set="auth.username=admin" \
+    --set="auth.password=admin" \
+    --set="auth.database=c4-notify-database" \
     --namespace database
 ```
 
 Helm install **mongo-payment**
 
 ```sh
-$   microk8s.helm install stable/mongodb \
-    --name="mongo-payment" \
-    --set="mongodbRootPassword=root-password" \
-    --set="mongodbUsername=admin" \
-    --set="mongodbPassword=admin" \
-    --set="mongodbDatabase=c4-payment-database" \
+$   microk8s.helm3 install mongo-payment bitnami/mongodb \
+    --set="auth.rootPassword=root-password" \
+    --set="auth.username=admin" \
+    --set="auth.password=admin" \
+    --set="auth.database=c4-payment-database" \
     --namespace database
-```
-
-Helm install **rabbitmq**
-
-```sh
-$   microk8s.helm install stable/rabbitmq \
-    --name rabbitmq \
-    --set="rabbitmq.username=guest" \
-    --set="rabbitmq.password=guest" \
-    --set="persistence.size=1Gi" \
-    --namespace message
 ```
 
 Helm install **postgres**
 
 ```sh
-$   microk8s.helm install stable/postgresql \
-    --name postgres \
+$   microk8s.helm3 install postgres bitnami/postgresql \
     --set postgresqlPassword=pgpassword,postgresqlDatabase=c4-customer-database \
     --namespace database
+```
+
+Helm install **kafka**
+
+```sh
+$   microk8s.helm3 my-kafka incubator/kafka \
+    --namespace message
 ```
 
 ## kustomize 

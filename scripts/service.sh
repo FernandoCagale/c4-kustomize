@@ -22,3 +22,5 @@ run "kustomize build c4-payment/overlays/development/ | microk8s.kubectl -n c4 a
 run "kustomize build c4-ecommerce/overlays/development/ | microk8s.kubectl -n c4 apply -f -"
 
 run "kustomize build c4-notify/overlays/development/ | microk8s.kubectl -n c4 apply -f -"
+
+run "kustomize build c4-type/overlays/development/ | microk8s.kubectl -n c4 apply -f -"

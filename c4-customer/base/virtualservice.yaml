@@ -4,15 +4,23 @@ metadata:
   name: c4-customer-virtual-service
 spec:
   hosts:
-  - "*"
-  gateways:
-  - application-gateway-c4
+  - c4-customer
   http:
   - match:
-    - uri:
+    - headers:
+        x-version:
+          exact: v2
+      uri:
         prefix: /customers
     route:
     - destination:
         host: c4-customer
         port:
           number: 8080
+        subset: c4-customer-v2
+  - route:
+    - destination:
+        host: c4-customer
+        port:
+          number: 8080
+        subset: c4-customer-v1

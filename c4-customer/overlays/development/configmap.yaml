@@ -5,6 +5,8 @@ metadata:
   labels:
     app: c4-customer
 data:
-  AMQP_URI: "amqp://guest:guest@rabbitmq.message.svc.cluster.local:5672/"
+  ADDRESS_KAFKA: "my-kafka.message.svc.cluster.local:9092"
   POSTGRES_ADDRS: "postgresql://postgres:pgpassword@postgres-postgresql.database.svc.cluster.local:5432?sslmode=disable"
+  ADDRESS_TYPE_HTTP: "http://c4-type-http:8080"
+  ADDRESS_TYPE_GRPC: "c4-type-grpc:5000"
   PORT: "8080"

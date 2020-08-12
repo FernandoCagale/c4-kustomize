@@ -11,6 +11,8 @@ spec:
   - match:
     - uri:
         prefix: /ecommerce
+    - uri:
+        prefix: /customers
     route:
     - destination:
         host: c4-ecommerce

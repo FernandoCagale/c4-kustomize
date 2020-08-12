@@ -5,7 +5,7 @@ resources:
   - service.yaml
   - virtualservice.yaml
 commonLabels:
-  app.kubernetes.io/component: c4-notify
+  app.kubernetes.io/component: c4-ecommerce
   app.kubernetes.io/managed-by: c4
   app.kubernetes.io/part-of: c4
   app.kubernetes.io/version: 0.0.1

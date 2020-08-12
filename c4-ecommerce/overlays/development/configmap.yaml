@@ -5,5 +5,6 @@ metadata:
   labels:
     app: c4-ecommerce
 data:
-  AMQP_URI: "amqp://guest:guest@rabbitmq.message.svc.cluster.local:5672/"
+  ADDRESS_KAFKA: "my-kafka.message.svc.cluster.local:9092"
+  ADDRESS_CUSTOMER: "http://c4-customer:8080"
   PORT: "8080"

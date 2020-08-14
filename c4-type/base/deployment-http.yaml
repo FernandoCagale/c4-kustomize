@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: c4-type-http
+  labels:
+    version: v1
+    app: c4-type-http
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: c4-type-http
+  template:
+    metadata:
+      labels:
+        version: v1
+        app: c4-type-http
+    spec:
+      containers:
+      - name: c4-type
+        image: fernandocagale/c4-type
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 1
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 1
+        envFrom:
+        - configMapRef:
+            name: c4-type-env

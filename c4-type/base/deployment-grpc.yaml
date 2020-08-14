@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: c4-type-grpc
+  labels:
+    version: v2
+    app: c4-type-grpc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: c4-type-grpc
+  template:
+    metadata:
+      labels:
+        version: v2
+        app: c4-type-grpc
+    spec:
+      containers:
+      - name: c4-type
+        image: fernandocagale/c4-type:v2
+        imagePullPolicy: Always
+        ports:
+        - name: tcp
+          containerPort: 5000
+          protocol: TCP
+        livenessProbe:
+          exec:
+            command: ["/grpc_health_probe", "-addr=:5000"]
+          initialDelaySeconds: 2
+        readinessProbe:
+          exec:
+            command: ["/grpc_health_probe", "-addr=:5000"]
+          initialDelaySeconds: 2
+        envFrom:
+        - configMapRef:
+            name: c4-type-env

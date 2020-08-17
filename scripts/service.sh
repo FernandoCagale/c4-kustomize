@@ -13,14 +13,14 @@ function run {
     eval $1
 }
 
-run "kustomize build c4-customer/overlays/development/ | microk8s.kubectl -n c4 apply -f -"
+run "kustomize build c4-customer/overlays/development/ | kubectl -n c4 apply -f -"
 
-run "kustomize build c4-order/overlays/development/ | microk8s.kubectl -n c4 apply -f -"
+run "kustomize build c4-order/overlays/development/ | kubectl -n c4 apply -f -"
 
-run "kustomize build c4-payment/overlays/development/ | microk8s.kubectl -n c4 apply -f -"
+run "kustomize build c4-payment/overlays/development/ | kubectl -n c4 apply -f -"
 
-run "kustomize build c4-ecommerce/overlays/development/ | microk8s.kubectl -n c4 apply -f -"
+run "kustomize build c4-ecommerce/overlays/development/ | kubectl -n c4 apply -f -"
 
-run "kustomize build c4-notify/overlays/development/ | microk8s.kubectl -n c4 apply -f -"
+run "kustomize build c4-notify/overlays/development/ | kubectl -n c4 apply -f -"
 
-run "kustomize build c4-type/overlays/development/ | microk8s.kubectl -n c4 apply -f -"
+run "kustomize build c4-type/overlays/development/ | kubectl -n c4 apply -f -"

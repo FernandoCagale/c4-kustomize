@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: c4-customer
-        image: fernandocagale/c4-customer:v2
+        image: fernandocagale/c4-customer:grpc
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

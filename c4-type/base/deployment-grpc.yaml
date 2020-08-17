@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: c4-type
-        image: fernandocagale/c4-type:v2
+        image: fernandocagale/c4-type:grpc
         imagePullPolicy: Always
         ports:
         - name: tcp

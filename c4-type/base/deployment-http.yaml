@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: c4-type
-        image: fernandocagale/c4-type
+        image: fernandocagale/c4-type:http
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

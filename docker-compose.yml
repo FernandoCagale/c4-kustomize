@@ -2,7 +2,6 @@ version: '3.5'
 
 services:
   postgres:
-    container_name: postgres_container
     image: postgres
     environment:
       POSTGRES_USER: pguser
@@ -18,13 +17,12 @@ services:
     restart: unless-stopped
   
   pgadmin:
-    container_name: pgadmin_container
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
     volumes:
-       - pgadmin:/root/.pgadmin
+      - pgadmin:/root/.pgadmin
     ports:
       - "${PGADMIN_PORT:-5050}:80"
     networks:
@@ -32,23 +30,37 @@ services:
     restart: unless-stopped
 
   mongo:
-    container_name: mongo_container
     image: mongo
-    restart: always
     volumes:
       - mongo:/data/db
     ports:
-        - 27017:27017    
+      - 27017:27017
     networks:
       - infra
     restart: unless-stopped
 
-  rabbitmq:
-    container_name: rabbitmq_container
-    image: rabbitmq:3-management-alpine
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - infra
+    restart: unless-stopped
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
     ports:
-        - 5672:5672
-        - 15672:15672
+      - 9092:9092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     networks:
       - infra
     restart: unless-stopped

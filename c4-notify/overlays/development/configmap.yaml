@@ -5,7 +5,7 @@ metadata:
   labels:
     app: c4-notify
 data:
-  AMQP_URI: "amqp://guest:guest@rabbitmq.message.svc.cluster.local:5672/"
+  ADDRESS_KAFKA: "my-kafka.message.svc.cluster.local:9092"
   MONGO_ADDRS: "mongo-notify-mongodb.database.svc.cluster.local"
   MONGO_DATABASE: "c4-notify-database"
   MONGO_USERNAME: "admin"

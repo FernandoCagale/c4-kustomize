@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   - deployment.yaml
   - service.yaml
-  - virtualservice.yaml
 commonLabels:
   app.kubernetes.io/component: c4-notify
   app.kubernetes.io/managed-by: c4

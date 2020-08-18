@@ -10,7 +10,7 @@ Create all **namespaces**
 
 
 ```sh
-$   microk8s.kubectl apply -k c4/base
+$   kubectl apply -k c4/base
 ```
 
 ![](img/c4.gif)
@@ -21,7 +21,7 @@ $   microk8s.kubectl apply -k c4/base
 Helm install **mongo-order**
 
 ```sh
-$   microk8s.helm3 install mongo-order bitnami/mongodb \
+$   helm install mongo-order bitnami/mongodb \
     --set="auth.rootPassword=root-password" \
     --set="auth.username=admin" \
     --set="auth.password=admin" \
@@ -32,7 +32,7 @@ $   microk8s.helm3 install mongo-order bitnami/mongodb \
 Helm install **mongo-notify**
 
 ```sh
-$   microk8s.helm3 install mongo-notify bitnami/mongodb \
+$   helm install mongo-notify bitnami/mongodb \
     --set="auth.rootPassword=root-password" \
     --set="auth.username=admin" \
     --set="auth.password=admin" \
@@ -43,7 +43,7 @@ $   microk8s.helm3 install mongo-notify bitnami/mongodb \
 Helm install **mongo-payment**
 
 ```sh
-$   microk8s.helm3 install mongo-payment bitnami/mongodb \
+$   helm install mongo-payment bitnami/mongodb \
     --set="auth.rootPassword=root-password" \
     --set="auth.username=admin" \
     --set="auth.password=admin" \
@@ -54,7 +54,7 @@ $   microk8s.helm3 install mongo-payment bitnami/mongodb \
 Helm install **postgres**
 
 ```sh
-$   microk8s.helm3 install postgres bitnami/postgresql \
+$   helm install postgres bitnami/postgresql \
     --set postgresqlPassword=pgpassword,postgresqlDatabase=c4-customer-database \
     --namespace database
 ```
@@ -62,7 +62,7 @@ $   microk8s.helm3 install postgres bitnami/postgresql \
 Helm install **kafka**
 
 ```sh
-$   microk8s.helm3 my-kafka incubator/kafka \
+$   helm my-kafka incubator/kafka \
     --namespace message
 ```
 
@@ -71,29 +71,35 @@ $   microk8s.helm3 my-kafka incubator/kafka \
 Install [c4-customer](https://github.com/FernandoCagale/c4-customer)
 
 ```sh
-$   kustomize build c4-customer/overlays/development/ | microk8s.kubectl -n c4 apply -f -
+$   kustomize build c4-customer/overlays/development/ | kubectl -n c4 apply -f -
 ```
 
 Install [c4-order](https://github.com/FernandoCagale/c4-order)
 
 ```sh
-$   kustomize build c4-order/overlays/development/ | microk8s.kubectl -n c4 apply -f -
+$   kustomize build c4-order/overlays/development/ | kubectl -n c4 apply -f -
 ```
 
 Install [c4-payment](https://github.com/FernandoCagale/c4-payment)
 
 ```sh
-$   kustomize build c4-payment/overlays/development/ | microk8s.kubectl -n c4 apply -f -
+$   kustomize build c4-payment/overlays/development/ | kubectl -n c4 apply -f -
 ```
 
 Install [c4-ecommerce](https://github.com/FernandoCagale/c4-ecommerce)
 
 ```sh
-$   kustomize build c4-ecommerce/overlays/development/ | microk8s.kubectl -n c4 apply -f -
+$   kustomize build c4-ecommerce/overlays/development/ | kubectl -n c4 apply -f -
 ```
 
 Install [c4-notify](https://github.com/FernandoCagale/c4-notify)
 
 ```sh
-$   kustomize build c4-notify/overlays/development/ | microk8s.kubectl -n c4 apply -f -
+$   kustomize build c4-notify/overlays/development/ | kubectl -n c4 apply -f -
+```
+
+Install [c4-type](https://github.com/FernandoCagale/c4-type)
+
+```sh
+$   kustomize build c4-type/overlays/development/ | kubectl -n c4 apply -f -
 ```

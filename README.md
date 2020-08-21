@@ -15,6 +15,9 @@ $   kubectl apply -k c4/base
 
 ![](img/c4.gif)
 
+## Distributed tracing [Jaeger](https://kustomize.io/)
+
+![](img/jaeger.gif)
 
 ## Helm
 

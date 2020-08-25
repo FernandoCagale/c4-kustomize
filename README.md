@@ -69,6 +69,13 @@ $   helm my-kafka incubator/kafka \
     --namespace message
 ```
 
+Helm install **Keycloak**
+
+```sh
+$   helm install keycloak codecentric/keycloak \
+    --namespace iam
+```
+
 ## kustomize 
 
 Install [c4-customer](https://github.com/FernandoCagale/c4-customer)

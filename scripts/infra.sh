@@ -40,3 +40,6 @@ run "helm install postgres bitnami/postgresql \
 
 run "helm install my-kafka incubator/kafka \
     --namespace message"
+
+run "helm install keycloak codecentric/keycloak \
+    --namespace iam"

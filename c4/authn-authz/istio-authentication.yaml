@@ -1,0 +1,15 @@
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: c4-ecommerce
+  namespace: c4
+  labels:
+    app: c4-ecommerce
+spec:
+  selector:
+    matchLabels:
+      app: c4-ecommerce
+  jwtRules:
+  - issuer: http://<IP>/auth/realms/c4
+    jwksUri: http://<IP>/auth/realms/c4/protocol/openid-connect/certs
+    forwardOriginalToken: true

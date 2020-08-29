@@ -1,0 +1,24 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: c4-ecommerce
+  namespace: c4
+  labels:
+    app: c4-ecommerce
+spec:
+  selector:
+    matchLabels:
+      app: c4-ecommerce
+  action: ALLOW
+  rules:
+  - to:
+    - operation:
+        methods: ["POST"]
+        paths: ["/customers"]
+    when:
+    - key: request.auth.claims[scope]
+      values: ["customer"]
+  - to:
+    - operation:
+        methods: ["POST"]
+        paths: ["/ecommerce"]

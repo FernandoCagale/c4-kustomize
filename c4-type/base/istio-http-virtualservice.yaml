@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: c4-type-http-virtual-service
+spec:
+  hosts:
+  - c4-type-http
+  http:
+  - fault:
+      delay:
+        fixedDelay: 3s
+        percentage:
+          value: 100
+    match:
+    - uri:
+        prefix: /types
+    route:
+    - destination:
+        host: c4-type-http
+        subset: c4-type-http-v1

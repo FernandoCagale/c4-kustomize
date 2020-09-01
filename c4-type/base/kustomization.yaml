@@ -5,11 +5,12 @@ resources:
   - deployment-grpc.yaml
   - service-http.yaml
   - service-grpc.yaml
+  - istio-http-destinationrule.yaml
+  - istio-http-virtualservice.yaml
 commonLabels:
   app.kubernetes.io/component: c4-type
   app.kubernetes.io/managed-by: c4
   app.kubernetes.io/part-of: c4
-  app.kubernetes.io/version: 0.0.1
 
 configMapGenerator:
 - literals:

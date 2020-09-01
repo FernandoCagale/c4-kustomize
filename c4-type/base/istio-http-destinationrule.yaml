@@ -1,0 +1,12 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: c4-type-http-destination-rule
+  labels:
+    app: c4-type-http
+spec:
+  host: c4-type-http
+  subsets:
+  - labels:
+      version: v1
+    name: c4-type-http-v1

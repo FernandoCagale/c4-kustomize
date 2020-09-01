@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: c4-customer-destination-rule
+  labels:
+    app: c4-customer
+spec:
+  host: c4-customer
+  subsets:
+  - labels:
+      version: v1
+    name: c4-customer-v1
+  - labels:
+      version: v2
+    name: c4-customer-v2

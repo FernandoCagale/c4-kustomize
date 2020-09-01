@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: c4-customer-virtual-service
+spec:
+  hosts:
+  - c4-customer
+  http:
+  - match:
+    - headers:
+        x-version:
+          exact: v2
+      uri:
+        prefix: /customers
+    route:
+    - destination:
+        host: c4-customer
+        subset: c4-customer-v2
+  - route:
+    - destination:
+        host: c4-customer
+        subset: c4-customer-v1
